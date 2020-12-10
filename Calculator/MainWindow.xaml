@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="Stupid Calculator" Height="450" Width="365" 
-        WindowStartupLocation="CenterScreen">
+        Title="Yichun Calculator" Height="550" Width="365" 
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <local:ValueConverter x:Key="valueConverter"/>
+    </Window.Resources>
 
     <Grid Margin="10,9,10,10">
         <Grid.RowDefinitions>
             <!--output window-->
+            <RowDefinition Height = "100"/>
             <RowDefinition Height = "100"/>
             <!--input panel-->
             <RowDefinition Height = "70"/>
@@ -29,7 +34,7 @@
         <!--#region Input Panel-->
         <Button 
             x:Name="SevenBtn" 
-            Grid.Row="1" 
+            Grid.Row="2" 
             Grid.Column="0" 
             Content="7" 
             FontSize="25" 
@@ -38,7 +43,7 @@
             />
         <Button 
             x:Name="EightBtn" 
-            Grid.Row="1" 
+            Grid.Row="2" 
             Grid.Column="1" 
             Content="8" 
             FontSize="25" 
@@ -47,7 +52,7 @@
             />
         <Button 
             x:Name="NineBtn" 
-            Grid.Row="1" 
+            Grid.Row="2" 
             Grid.Column="2" 
             Content="9" 
             FontSize="25" 
@@ -56,7 +61,7 @@
             />
         <Button 
             x:Name="FourBtn" 
-            Grid.Row="2" 
+            Grid.Row="3" 
             Grid.Column="0" 
             Content="4" 
             FontSize="25" 
@@ -65,7 +70,7 @@
             />
         <Button 
             x:Name="FiveBtn" 
-            Grid.Row="2" 
+            Grid.Row="3" 
             Grid.Column="1" 
             Content="5" 
             FontSize="25" 
@@ -74,7 +79,7 @@
             />
         <Button 
             x:Name="SixBtn" 
-            Grid.Row="2" 
+            Grid.Row="3" 
             Grid.Column="2" 
             Content="6" 
             FontSize="25" 
@@ -83,7 +88,7 @@
             />
         <Button 
             x:Name="OneBtn" 
-            Grid.Row="3" 
+            Grid.Row="4" 
             Grid.Column="0" 
             Content="1" 
             FontSize="25" 
@@ -92,7 +97,7 @@
             />
         <Button 
             x:Name="TwoBtn" 
-            Grid.Row="3" 
+            Grid.Row="4" 
             Grid.Column="1" 
             Content="2" 
             FontSize="25" 
@@ -101,7 +106,7 @@
             />
         <Button 
             x:Name="ThreeBtn" 
-            Grid.Row="3" 
+            Grid.Row="4" 
             Grid.Column="2" 
             Content="3" 
             FontSize="25" 
@@ -110,7 +115,7 @@
             />
         <Button 
             x:Name="ZeroBtn" 
-            Grid.Row="4" 
+            Grid.Row="5" 
             Grid.Column="1" 
             Content="0" 
             FontSize="25" 
@@ -120,7 +125,7 @@
 
         <Button 
             x:Name="ClearBtn" 
-            Grid.Row="4" 
+            Grid.Row="5" 
             Grid.Column="0" 
             Content="C" 
             FontSize="25" 
@@ -131,7 +136,7 @@
 
         <Button 
             x:Name="EqualBtn" 
-            Grid.Row="4" 
+            Grid.Row="5" 
             Grid.Column="2" 
             Content="=" 
             FontSize="25" 
@@ -141,42 +146,28 @@
 
         <Button 
             x:Name="AddBtn" 
-            Grid.Row="1" 
-            Grid.Column="3" 
+            Grid.Row="2" 
+            Grid.RowSpan="2"
+            Grid.Column="3"
             Content="+" 
-            FontSize="25" 
+            FontSize="50" 
             FontWeight="Bold" 
-            Click="OperatorBtn_Click"
+            Click="OperatorBtn_Click"  
             />
 
         <Button 
             x:Name="MinusBtn" 
-            Grid.Row="2" 
-            Grid.Column="3" 
+            Grid.Row="4" 
+            Grid.RowSpan="2"
+            Grid.Column="3"
             Content="-" 
-            FontSize="25" 
+            FontSize="50" 
             FontWeight="Bold" 
-            Click="OperatorBtn_Click"
+            Click="OperatorBtn_Click"  
             />
 
-        <Button 
-            x:Name="MultiplyBtn" 
-            Grid.Row="3" 
-            Grid.Column="3" 
-            Content="*" 
-            FontSize="25" 
-            FontWeight="Bold" 
-            Click="OperatorBtn_Click" 
-            />
-        <Button 
-            x:Name="DivideBtn" 
-            Grid.Row="4" 
-            Grid.Column="3" 
-            Content="/" 
-            FontSize="25" 
-            FontWeight="Bold" 
-            Click="OperatorBtn_Click"
-            />
+
+
         <!--#endregion-->
 
         <!--#region Display window with Style -->
@@ -203,6 +194,30 @@
             </TextBlock.Style>
         </TextBlock>
 
+
+        <TextBlock x:Name="DisplayHex"
+                   Grid.Row="1" 
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4" 
+                   TextAlignment="Right"
+                   VerticalAlignment="Center"
+                   Background="Beige"  
+                   HorizontalAlignment="Left" 
+                   Width="333" 
+                   Height="100"
+                   Padding="10,25"
+                   Text = "{Binding Converter = {StaticResource valueConverter}, 
+                                ElementName=Display,Path=Text}"
+                   >
+
+            <TextBlock.Style>
+                <Style>
+                    <Setter Property="TextBlock.FontSize" Value="48"/>
+                    <Setter Property="TextBlock.FontFamily" Value="Arial Black"/>
+                    <Setter Property="TextBlock.Foreground" Value="BurlyWood"/>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <!--#endregion-->
 
     </Grid>

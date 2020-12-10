@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Calculator
 {
@@ -48,7 +36,7 @@ namespace Calculator
 
         private void EqualBtn_Click(object sender, RoutedEventArgs e)
         {
-            num2 = decimal.Parse(Display.Text);
+            num2 = decimal.Parse(Display.Text.Remove(0,1));
             switch (Operator)
             {
                 case "+":
@@ -57,13 +45,6 @@ namespace Calculator
                 case "-":
                     Display.Text = (num1 - num2).ToString();
                     break;
-                case "*":
-                    Display.Text = (num1 * num2).ToString();
-                    break;
-                case "/":
-                    Display.Text = (num1 / num2).ToString();
-                    break;
-
             }
         }
 
@@ -72,7 +53,7 @@ namespace Calculator
             Button btn = (Button)sender;
             Operator = btn.Content.ToString();
             num1 = decimal.Parse(Display.Text);
-            Display.Text = "";
+            Display.Text = Operator;
         }
     }
 }
