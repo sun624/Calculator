@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="Stupid Calculator" Height="450" Width="365">
+        Title="Stupid Calculator" Height="450" Width="365" 
+        WindowStartupLocation="CenterScreen">
 
     <Grid Margin="10,9,10,10">
         <Grid.RowDefinitions>
@@ -24,7 +25,7 @@
             <ColumnDefinition Width="82.5"/>
             <ColumnDefinition Width="82"/>
         </Grid.ColumnDefinitions>
-        
+
         <!--#region Input Panel-->
         <Button 
             x:Name="SevenBtn" 
@@ -124,7 +125,7 @@
             Content="C" 
             FontSize="25" 
             FontWeight="Bold" 
-            Click="NumBtn_Click"
+            Click="ClearBtn_Click"
             Background="Beige"
             />
 
@@ -135,7 +136,7 @@
             Content="=" 
             FontSize="25" 
             FontWeight="Bold" Background="AliceBlue" 
-            Click="NumBtn_Click"
+            Click="EqualBtn_Click"
             />
 
         <Button 
@@ -145,7 +146,7 @@
             Content="+" 
             FontSize="25" 
             FontWeight="Bold" 
-            Click="NumBtn_Click"
+            Click="OperatorBtn_Click"
             />
 
         <Button 
@@ -155,50 +156,54 @@
             Content="-" 
             FontSize="25" 
             FontWeight="Bold" 
-            Click="NumBtn_Click"
+            Click="OperatorBtn_Click"
             />
 
         <Button 
-            x:Name="MultipleBtn" 
+            x:Name="MultiplyBtn" 
             Grid.Row="3" 
             Grid.Column="3" 
             Content="*" 
             FontSize="25" 
             FontWeight="Bold" 
-            Click="NumBtn_Click" 
+            Click="OperatorBtn_Click" 
             />
         <Button 
-            x:Name="DividBtn" 
+            x:Name="DivideBtn" 
             Grid.Row="4" 
             Grid.Column="3" 
             Content="/" 
             FontSize="25" 
             FontWeight="Bold" 
-            Click="NumBtn_Click"
+            Click="OperatorBtn_Click"
             />
         <!--#endregion-->
-        
+
         <!--#region Display window with Style -->
+
         <TextBlock x:Name="Display"
                    Grid.Row="0" 
                    Grid.Column="0"
                    Grid.ColumnSpan="4" 
                    Text="0" 
                    TextAlignment="Right"
-                   Foreground="Aqua" 
-                   HorizontalAlignment="Right" 
-                   VerticalAlignment="Center" 
+                   VerticalAlignment="Center"
                    Background="Beige"  
+                   HorizontalAlignment="Left" 
                    Width="333" 
-                   Height="100">
+                   Height="100"
+                   Padding="10,25"
+                   >
             <TextBlock.Style>
                 <Style>
-                    <Setter Property="TextBlock.FontSize" Value="50"/>
+                    <Setter Property="TextBlock.FontSize" Value="48"/>
                     <Setter Property="TextBlock.FontFamily" Value="Arial Black"/>
+                    <Setter Property="TextBlock.Foreground" Value="Aquamarine"/>
                 </Style>
             </TextBlock.Style>
-        </TextBlock> 
-        <!--#endregion-->           
+        </TextBlock>
+
+        <!--#endregion-->
 
     </Grid>
 </Window>
